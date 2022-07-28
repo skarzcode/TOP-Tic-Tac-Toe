@@ -7,6 +7,38 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <div class="startGame">
+        <div class=" player player1">
+            <h3>player1</h3>
+            <input type="text" name="" class="player1Value">
+        </div>
+
+        <button class="startGameBtn">start Game</button>
+
+        <div class=" player player2">
+            <h3>player2</h3>
+            <input type="text" name="" class="player2Value">
+        </div>
+
+    </div>
+    <div class="boardContainer">
+        <div id="0" class="Cell"></div>
+        <div id="1" class="Cell"></div>
+        <div id="2" class="Cell"></div>
+        <div id="3" class="Cell"></div>
+        <div id="4" class="Cell"></div>
+        <div id="5" class="Cell"></div>
+        <div id="6" class="Cell"></div>
+        <div id="7" class="Cell"></div>
+        <div id="8" class="Cell"></div>
+    </div>
+
+    <div class="gameEnded">
+        <iframe src="https://giphy.com/embed/rVzvUgOpJlQkS06ZMO" width="480" height="310" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <h1 class="playerCelebrate">PLayer 1 has won</h1>
+        <button class="restart">Restart Game</button>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
