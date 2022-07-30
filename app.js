@@ -21,62 +21,137 @@ const GameBoard = (() => {
 
     const gameCell = document.querySelectorAll(".Cell");
 
+    let hasEnded = false;
 
-    const checkifWon = (player, boardContainer,gameEnded) => {
+    let counter = 0;
+
+
+    const checkifWon = (player, boardContainer,gameEnded,playerCelebrate) => {
             if (GameBoard.board[0] == player.sign && GameBoard.board[1] == player.sign && GameBoard.board[2] == player.sign) {
-                console.log(`${player.Name} has won`);
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                hasEnded = true;
                
-            }
-            if (GameBoard.board[3] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[5] == player.sign) {
-                console.log(`${player.Name} has won`);
+            } 
+            else if (GameBoard.board[3] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[5] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
+               
                
             }
-            if (GameBoard.board[6] == player.sign && GameBoard.board[7] == player.sign && GameBoard.board[8] == player.sign) {
-                console.log(`${player.Name} has won`);
+            else if(GameBoard.board[6] == player.sign && GameBoard.board[7] == player.sign && GameBoard.board[8] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
                
             }
-            if (GameBoard.board[0] == player.sign && GameBoard.board[3] == player.sign && GameBoard.board[6] == player.sign) {
-                console.log(`${player.Name} has won`);
+            else if(GameBoard.board[0] == player.sign && GameBoard.board[3] == player.sign && GameBoard.board[6] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
                
             }
-            if (GameBoard.board[1] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[7] == player.sign) {
-                console.log(`${player.Name} has won`);
+            else if(GameBoard.board[1] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[7] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
                
             }
-            if (GameBoard.board[2] == player.sign && GameBoard.board[5] == player.sign && GameBoard.board[8] == player.sign) {
-                console.log(`${player.Name} has won`);
+            else if(GameBoard.board[2] == player.sign && GameBoard.board[5] == player.sign && GameBoard.board[8] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
                
             }
-            if (GameBoard.board[0] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[8] == player.sign) {
-                console.log(`${player.Name} has won`);
+            else if(GameBoard.board[0] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[8] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
-               
+                playerCelebrate.innerHTML = `${player.Name} has Won.`;
+                GameBoard.hasEnded = true;
             }
-            if (GameBoard.board[2] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[6] == player.sign) {
-            console.log(`${player.Name} has won`);
+            else if(GameBoard.board[2] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[6] == player.sign) {
             boardContainer.classList.remove("displayContainer");
             gameEnded.style.display = 'block';
+            playerCelebrate.innerHTML = `${player.Name} has Won.`;
+            GameBoard.hasEnded = true;
+            } 
+            else{
+                GameBoard.counter += 1;
+                console.log(GameBoard.counter);
+            }
+
+            if (GameBoard.counter >= 9){
+                console.log("draw");
+                GameBoard.hasEnded = true;
+            };
+    //      else if (!(GameBoard.board[0] == player.sign && GameBoard.board[1] == player.sign && GameBoard.board[2] == player.sign)) {
+    //        console.log()
            
-        }
-    };
+    //     } 
+    //     else if (GameBoard.board[3] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[5] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+           
+    //     }
+    //     else if(GameBoard.board[6] == player.sign && GameBoard.board[7] == player.sign && GameBoard.board[8] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+    //     }
+    //     else if(GameBoard.board[0] == player.sign && GameBoard.board[3] == player.sign && GameBoard.board[6] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+    //     }
+    //     else if(GameBoard.board[1] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[7] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+    //     }
+    //     else if(GameBoard.board[2] == player.sign && GameBoard.board[5] == player.sign && GameBoard.board[8] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+    //     }
+    //     else if(GameBoard.board[0] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[8] == player.sign) {
+    //         boardContainer.classList.remove("displayContainer");
+    //         gameEnded.style.display = 'block';
+    //         playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //         hasEnded = true;
+           
+    //     }
+    //     else if(GameBoard.board[2] == player.sign && GameBoard.board[4] == player.sign && GameBoard.board[6] == player.sign) {
+    //     boardContainer.classList.remove("displayContainer");
+    //     gameEnded.style.display = 'block';
+    //     playerCelebrate.innerHTML = `${player.Name} has Won.`;
+    //     hasEnded = true;
+    // } 
+    }
 
     return {
         board,
         gameCell,
-        checkifWon
+        checkifWon,
+        hasEnded,
+        counter
     };
 
 })();
@@ -92,7 +167,7 @@ const gameEnded = document.querySelector(".gameEnded");
 const playerCelebrate = document.querySelector(".playerCelebrate")
 const restartGame = document.querySelector(".restart");
 const randomindex = () => {
-   let x = Math.floor(Math.random() * GameBoard.gameCell.length-1);
+   let x = Math.floor(Math.random() * (GameBoard.gameCell.length - 1));
    return x;
 };
 
@@ -133,30 +208,50 @@ restartGame.addEventListener("click", function(){
 })
 
     let playersGo = true;
+    let emptyCell = false;
+    let counter = 0;
+    
 
     const CPUrender = () => {
+        player1.Name = prompt("What is your Name");
         boardContainer.classList.add("displayContainer");
         startGameContainer.classList.add("hideContainer"); 
         GameBoard.gameCell.forEach((cell) => {
             cell.addEventListener("click", function () { 
+                let i = 0;
                 const num = cell.id;
                 if (playersGo == true && GameBoard.board[num] == "") {
                     cell.innerHTML = player1.sign;
                     GameBoard.board[num] = cell.innerHTML;
                     console.log(GameBoard.board)
                     playersGo = false;
-                    GameBoard.checkifWon(player1,boardContainer,gameEnded);
-                    playerCelebrate.innerHTML = `${player1.Name} has Won.`;
+                    emptyCell = false;
+                    GameBoard.checkifWon(player1,boardContainer,gameEnded,playerCelebrate,GameBoard.counter);
+                    if(GameBoard.hasEnded == true){
+
+                    } else{
                     const cpuTurn = ()=>{
-                        if (playersGo == false){
+                        while (playersGo == false && emptyCell == false && GameBoard.hasEnded == false ){
                             let index = randomindex();
-                            GameBoard.board[index] = "O";
-                            GameBoard.gameCell[index].innerHTML = "O"
-                            playersGo = true
-                        }
+                            let print = false;
+                            if(GameBoard.board[index] == ""){
+                        GameBoard.gameCell[index].innerHTML = "O";
+                        GameBoard.board[index] = "O";
+                        setTimeout(() => {
+                            GameBoard.checkifWon(player3,boardContainer,gameEnded,playerCelebrate,GameBoard.counter);
+                        }, 2000);
+                        emptyCell = true;
+                        playersGo = true;
+                        }};
+                       
+                       
                     };
-                    setInterval(cpuTurn, 1000);
-                   
+                    
+
+                    setTimeout(cpuTurn, 2000);
+        
+                    
+                }
                 }
 
                 
@@ -205,6 +300,7 @@ restartGame.addEventListener("click", function(){
 
 // Game.PVPrender();
 Game.CPUrender();
+
 
 
 
