@@ -1,3 +1,7 @@
+const gameMode = document.querySelectorAll(".GMimg");
+const gameModeContainer = document.querySelector(".chooseGameMode");
+
+
 
 const player = (Name, sign) => {
     const printSign = () => sign;
@@ -26,7 +30,7 @@ const GameBoard = (() => {
     let counter = 0;
 
 
-    const checkifWon = (player, boardContainer,gameEnded,playerCelebrate) => {
+    const checkifWon = (player, boardContainer,gameEnded,playerCelebrate,iframe) => {
             if (GameBoard.board[0] == player.sign && GameBoard.board[1] == player.sign && GameBoard.board[2] == player.sign) {
                 boardContainer.classList.remove("displayContainer");
                 gameEnded.style.display = 'block';
@@ -89,7 +93,11 @@ const GameBoard = (() => {
 
             if (GameBoard.counter >= 9){
                 console.log("draw");
+                gameEnded.style.display = 'block';
+                iframe.src = "https://giphy.com/embed/jMQ9pIL6UjPd9fo2KA";
+                playerCelebrate.innerHTML = "It was a draw";
                 GameBoard.hasEnded = true;
+               
             };
     //      else if (!(GameBoard.board[0] == player.sign && GameBoard.board[1] == player.sign && GameBoard.board[2] == player.sign)) {
     //        console.log()
@@ -165,6 +173,7 @@ const startGameContainer = document.querySelector(".startGame");
 const boardContainer = document.querySelector(".boardContainer");
 const gameEnded = document.querySelector(".gameEnded");
 const playerCelebrate = document.querySelector(".playerCelebrate")
+const iframe = document.querySelector(".GameIframe");
 const restartGame = document.querySelector(".restart");
 const randomindex = () => {
    let x = Math.floor(Math.random() * (GameBoard.gameCell.length - 1));
@@ -191,6 +200,8 @@ const cpuMove = () =>{
 
 
     const start = () => {
+        startGameContainer.classList.add("visibility");
+
 
     startGame.addEventListener("click", function(){
         if(input1.value && input2.value){
@@ -226,7 +237,7 @@ restartGame.addEventListener("click", function(){
                     console.log(GameBoard.board)
                     playersGo = false;
                     emptyCell = false;
-                    GameBoard.checkifWon(player1,boardContainer,gameEnded,playerCelebrate,GameBoard.counter);
+                    GameBoard.checkifWon(player1,boardContainer,gameEnded,playerCelebrate,iframe);
                     if(GameBoard.hasEnded == true){
 
                     } else{
@@ -238,7 +249,7 @@ restartGame.addEventListener("click", function(){
                         GameBoard.gameCell[index].innerHTML = "O";
                         GameBoard.board[index] = "O";
                         setTimeout(() => {
-                            GameBoard.checkifWon(player3,boardContainer,gameEnded,playerCelebrate,GameBoard.counter);
+                            GameBoard.checkifWon(player3,boardContainer,gameEnded,playerCelebrate,iframe);
                         }, 2000);
                         emptyCell = true;
                         playersGo = true;
@@ -270,15 +281,13 @@ restartGame.addEventListener("click", function(){
                     GameBoard.board[num] = cell.innerHTML;
                     console.log(GameBoard.board)
                     playersGo = false;
-                    GameBoard.checkifWon(player1,boardContainer,gameEnded);
-                    playerCelebrate.innerHTML = `${player1.Name} has Won.`;
+                    GameBoard.checkifWon(player1,boardContainer,gameEnded,playerCelebrate,iframe); 
                 } else if (playersGo == false && GameBoard.board[num] == "") {
                     cell.innerHTML = player2.sign;
                     GameBoard.board[num] = cell.innerHTML;
                     console.log(GameBoard.board)
                     playersGo = true;
-                    GameBoard.checkifWon(player2,boardContainer,gameEnded);
-                    playerCelebrate.innerHTML = `${player2.Name} has Won.`;
+                    GameBoard.checkifWon(player2,boardContainer,gameEnded,playerCelebrate,iframe);
                 }
             })
         })
@@ -292,6 +301,20 @@ restartGame.addEventListener("click", function(){
 
 })();
 
+gameMode.forEach((GM) => {
+    GM.addEventListener("click", function(){
+        if(GM.id == "pvp"){
+            gameModeContainer.classList.add("hideContainer");
+            Game.start();
+            Game.PVPrender();
+        } else if(GM.id == "pvc") {
+            gameModeContainer.classList.add("hideContainer");
+            Game.CPUrender();
+        }
+    })
+})
+
+
 
 
 
@@ -299,7 +322,7 @@ restartGame.addEventListener("click", function(){
 
 
 // Game.PVPrender();
-Game.CPUrender();
+// Game.CPUrender();
 
 
 
